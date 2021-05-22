@@ -1,24 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { useMutation } from "urql";
+import { CreateStoreDocument, useGetAllStoresQuery } from "./generated/graphql";
 
 function App() {
+  const [{ data }] = useGetAllStoresQuery();
+  const [{ fetching }, createStore] = useMutation(CreateStoreDocument);
+  const [name, setName] = useState("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div>
+      <ul>
+        {data?.allStores?.data?.map((store: any, index: any) => (
+          <li key={index}>{store?.name}</li>
+        ))}
+      </ul>
+      <div>
+        <input
+          name="storeName"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Store name"
+        />
+        <button
+          type="button"
+          onClick={() => {
+            setName("");
+            createStore({
+              name,
+              street: "1553 Silver Creek Drive",
+              city: "Lynchburg",
+              state: "VA",
+              zipCode: "24503",
+            });
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          {fetching ? "Adding..." : "Add store"}
+        </button>
+      </div>
     </div>
   );
 }

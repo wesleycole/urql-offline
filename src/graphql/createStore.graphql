@@ -1,0 +1,29 @@
+mutation CreateStore(
+  $name: String!
+  $street: String!
+  $city: String!
+  $state: String!
+  $zipCode: String!
+) {
+  createStore(
+    data: {
+      name: $name
+      address: {
+        street: $street
+        city: $city
+        state: $state
+        zipCode: $zipCode
+      }
+    }
+  ) {
+    _id
+    name
+    address {
+      _id
+      street
+      city
+      state
+      zipCode
+    }
+  }
+}

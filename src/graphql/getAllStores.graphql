@@ -1,0 +1,8 @@
+query GetAllStores {
+  allStores {
+    data {
+      _id
+      name
+    }
+  }
+}

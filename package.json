@@ -10,10 +10,14 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
+    "@urql/exchange-auth": "^0.1.3",
+    "@urql/exchange-graphcache": "^4.1.1",
+    "graphql": "^15.5.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "typescript": "^4.0.3",
+    "urql": "^2.0.3",
     "web-vitals": "^0.2.4",
     "workbox-background-sync": "^5.1.3",
     "workbox-broadcast-update": "^5.1.3",
@@ -28,11 +32,24 @@
     "workbox-strategies": "^5.1.3",
     "workbox-streams": "^5.1.3"
   },
+  "devDependencies": {
+    "@graphql-codegen/add": "^2.0.2",
+    "@graphql-codegen/cli": "1.21.4",
+    "@graphql-codegen/near-operation-file-preset": "^1.18.0",
+    "@graphql-codegen/typescript": "1.22.0",
+    "@graphql-codegen/typescript-document-nodes": "1.17.11",
+    "@graphql-codegen/typescript-graphql-files-modules": "1.18.1",
+    "@graphql-codegen/typescript-operations": "1.17.16",
+    "@graphql-codegen/typescript-urql": "^2.0.6",
+    "@graphql-codegen/urql-introspection": "1.3.0",
+    "dotenv": "^10.0.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "generate": "graphql-codegen --config codegen.yml -r dotenv/config"
   },
   "eslintConfig": {
     "extends": [
