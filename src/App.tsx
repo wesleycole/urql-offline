@@ -9,6 +9,7 @@ function App() {
 
   return (
     <div>
+      <h2>Stores</h2>
       <ul>
         {data?.allStores?.data?.map((store: any, index: any) => (
           <li key={index}>{store?.name}</li>
